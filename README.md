@@ -75,7 +75,7 @@ streamlit run streamlit_app.py
 
 | Component | Tool | Cost |
 |---|---|---|
-| LLM | Groq (llama-3.3-70b-versatile) | Free |
+| LLM | Groq (openai/gpt-oss-120b) | Free |
 | Agent framework | LangGraph | Free |
 | Web search | Tavily | Free (1k/month) |
 | Vector DB | ChromaDB (local) | Free |
