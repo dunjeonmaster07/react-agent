@@ -1,8 +1,6 @@
-import os,sys
 from dotenv import load_dotenv
 from src.agent import app, print_trace
 
-#sys.path.insert(os.path.join(os.path.dirname(__file__),"src"))
 load_dotenv()
 
 
