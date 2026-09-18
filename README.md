@@ -44,7 +44,14 @@ You need free accounts for:
 - [Tavily](https://tavily.com) — web search (1,000 free credits/month)
 - [LangSmith](https://smith.langchain.com) — tracing (5,000 free traces/month, optional)
 
-Commit changes → choose "Create a new branch and start a pull request" → Propose changes → Create pull request.
+### Build the knowledge base (one-time)
+
+The `search_knowledge_base` tool reads from a local Chroma store, which isn't
+included in the repo. Embed the PDFs in `data/` into it first:
+
+```bash
+python src/ingest.py
+```
 
 ### Run the CLI
 
@@ -64,6 +71,7 @@ streamlit run streamlit_app.py
 ├── src/
 │   ├── agent.py          # The 67-line ReAct agent (State, Nodes, Edges, Graph)
 │   ├── tools.py           # 4 tools: web search, RAG, add, multiply
+│   ├── ingest.py          # One-time: embeds data/*.pdf into the Chroma store
 │   └── __init__.py
 ├── data/                  # PDFs for the RAG knowledge base
 ├── main.py                # CLI chat interface
