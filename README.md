@@ -44,6 +44,14 @@ You need free accounts for:
 - [Tavily](https://tavily.com) — web search (1,000 free credits/month)
 - [LangSmith](https://smith.langchain.com) — tracing (5,000 free traces/month, optional)
 
+Build the local knowledge base from the PDFs in `data/` (one-time, or whenever
+those files change — `search_knowledge_base` has nothing to search until this
+has been run):
+
+```bash
+python -m src.ingest
+```
+
 ### Run the CLI
 
 ```bash
@@ -62,6 +70,7 @@ streamlit run streamlit_app.py
 ├── src/
 │   ├── agent.py          # The 67-line ReAct agent (State, Nodes, Edges, Graph)
 │   ├── tools.py           # 4 tools: web search, RAG, add, multiply
+│   ├── ingest.py          # Builds the Chroma knowledge base from data/*.pdf
 │   └── __init__.py
 ├── data/                  # PDFs for the RAG knowledge base
 ├── main.py                # CLI chat interface

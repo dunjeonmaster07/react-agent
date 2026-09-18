@@ -3,6 +3,7 @@ from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages #A reducer function that instructs the graph to merge new messages into the existing message
 from langchain_groq import ChatGroq
+from langchain_core.messages import SystemMessage
 from langgraph.prebuilt import ToolNode
 import os
 from dotenv import load_dotenv
@@ -40,7 +41,7 @@ class MessageState(TypedDict):
 # available tools so its responses can include structured tool call requests.
 # This is done once at module level — not per call — to avoid repeated work.
 llm = ChatGroq(
-    model = "llama-3.3-70b-versatile",
+    model = os.getenv("GROQ_LLM_MODEL", "llama-3.3-70b-versatile"),
     api_key = os.environ["GROQ_API_KEY"]
 )
 
@@ -54,9 +55,12 @@ llm_with_tools = llm.bind_tools(tools)
 # Passes the full conversation history to the LLM, which either:
 #   a) responds with text (done thinking), or
 #   b) responds with tool_calls (needs more info → triggers the ReAct loop)
+SYSTEM_PROMPT = SystemMessage(
+    "You are a helpful assistant. Use the provided tools when needed. Always use the correct tool calling format."
+)
+
 def agent_node(state: MessageState):
-    """You are a helpful assistant. Use the provided tools when needed. Always use the correct tool calling format."""
-    response = llm_with_tools.invoke(state["messages"])
+    response = llm_with_tools.invoke([SYSTEM_PROMPT] + state["messages"])
     return {"messages": [response]}
 
 

@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 st.set_page_config(page_title="ReAct Agent", page_icon="🤖", layout="wide")
-st.title("reAct Agent")
+st.title("ReAct Agent")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []

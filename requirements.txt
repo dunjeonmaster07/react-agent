@@ -14,7 +14,6 @@ chromadb==1.5.8
 click==8.3.3
 cryptography==46.0.7
 distro==1.9.0
-dotenv==0.9.9
 durationpy==0.10
 filelock==3.29.0
 flatbuffers==25.12.19
@@ -134,7 +133,6 @@ urllib3==2.6.3
 uuid_utils==0.14.1
 uvicorn==0.46.0
 uvloop==0.22.1
-v==1
 watchfiles==1.1.1
 websocket-client==1.9.0
 websockets==16.0
