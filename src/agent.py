@@ -40,7 +40,7 @@ class MessageState(TypedDict):
 # available tools so its responses can include structured tool call requests.
 # This is done once at module level — not per call — to avoid repeated work.
 llm = ChatGroq(
-    model = "llama-3.3-70b-versatile",
+    model = os.environ.get("GROQ_LLM_MODEL", "openai/gpt-oss-120b"),
     api_key = os.environ["GROQ_API_KEY"]
 )
 
