@@ -44,7 +44,8 @@ You need free accounts for:
 - [Tavily](https://tavily.com) — web search (1,000 free credits/month)
 - [LangSmith](https://smith.langchain.com) — tracing (5,000 free traces/month, optional)
 
-Commit changes → choose "Create a new branch and start a pull request" → Propose changes → Create pull request.
+Commit changes.
+→ choose "Create a new branch and start a pull request" → Propose changes → Create pull request.
 
 ### Run the CLI
 
